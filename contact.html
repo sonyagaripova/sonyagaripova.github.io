@@ -18,8 +18,18 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alice|Open+Sans:400,300,700">
 	<!-- Custom styles -->
 	<link rel="stylesheet" href="assets/css/styles.css">
-
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
 	<!--[if lt IE 9]> <script src="assets/js/html5shiv.js"></script> <![endif]-->
+	<style>
+        #map
+        {
+            font: 15px "Open sans",  Helvetica, Arial, sans-serif;
+            margin: 0;
+            height: 200px;
+            width: 460px;
+        }
+    </style>
 </head>
 <body>
 
@@ -58,7 +68,7 @@
 		<div class="row topspace">
 			<div class="col-sm-8 col-sm-offset-2">
 				<div class="col-md-12">
-					<p class="lead text-center text-muted">Don't hesitate to contact me</p>
+					<p class="lead text-center text-muted">Here are my profiles</p>
 
  							<p>
 								<a class="cont" href="https://t.me/sonchezz" target="_blank">
@@ -88,17 +98,16 @@
 										<span class="cover"><span class="more">LinkedIn</span></span>
 									</span>
 								</a>
-						</p>
-
-						
-						
-					</div>
-				
-			</div> 
-		</div> <!-- /row post  -->
-		
-	</div>	<!-- /container -->
-
+							</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<center>
+		<p class="lead text-center text-muted">And my current location</p>
+		<div id="map"></div></center>
+	<p></p>
+	
 </main>
 
 <footer id="footer">
@@ -133,8 +142,43 @@
 		</div> <!-- /row of widgets -->
 	</div>
 </footer>
+<!-- leaflet js-->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
+<script>
+						var map = L.map('map').setView([51.152, 71.431], 4);
+						//osm layer
 
+						var darkCartoDB = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+							attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+							subdomains: 'abcd',
+							maxZoom: 20
+						});
+
+						var greyCartoDB = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+										attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+										subdomains: 'abcd',
+										maxZoom: 8
+						});
+						greyCartoDB.addTo(map);
+
+						var home = L.icon({
+							iconUrl: 'assets/images/location.png',
+							iconSize: [50, 50],
+							iconAnchor: [25, 25]
+						});
+
+						L.marker([51.152, 71.431], {
+							icon: home
+						}).addTo(map).bindPopup("Astana, Kazakhstan");
+
+						L.control.layers(baseMaps).addTo(map);
+						L.control.layers(secondMaps, prepare, {collapsed : false}).addTo(map);
+						map.on("zoomend", function () {
+							var newMapZoom = map.getZoom();
+
+						});
+					</script>
 
 <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
