@@ -6,7 +6,7 @@
 	<meta name="description" content="">
 	<meta name="author"      content="Sergey Pozhilov (GetTemplate.com)">
 	
-	<title>Projects | Sofya Garipova</title>
+	<title>About page | Sofya Garipova</title>
 
 	<link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/128/574/574480.png">
 
@@ -31,11 +31,11 @@
 		</h1>
 	</div>
 
-	<nav class="navbar navbar-default navbar-sticky">
+	<nav class="navbar navbar-default">
 		<div class="container-fluid">
 
 			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
 			</div>
 
 			<div class="navbar-collapse collapse">
@@ -43,10 +43,9 @@
 				<ul class="nav navbar-nav">
 					<li><a href="https://sonyagaripova.github.io/" class="highlight">Home</a></li>
 					<li class="active"><a href="https://sonyagaripova.github.io/about.html" class="highlight">About me</a></li>
-					<li><a href="https://sonyagaripova.github.io/contact" class="highlight">Contact</a></li>
+					<li><a href="https://sonyagaripova.github.io/contact.html" class="highlight">Contact</a></li>
 				</ul>
-
-			</div>
+			</div><!--/.nav-collapse -->
 		</div>
 	</nav>
 </header>
@@ -66,39 +65,64 @@
  						<h1 class="lead text-center">A map of background seismicity of Russia</h1>
 					</header>
 					<div class="entry-content">
-						<p><img alt="" src="assets/images/sk1.jpg"></p>
+						<p><img alt="" src="proj1/clus1.jpg"></p>
 						<p>
-						<blockquote> The aim of project and brief description</blockquote>
-							What did I do? Stages of work. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit, rerum voluptates veniam. Esse, nihil, ea, eaque, quos cum id tempore voluptate nisi nemo debitis impedit officiis culpa repellat voluptatum in aperiam error quo minima ratione ex pariatur maxime eligendi dolore nesciunt molestiae enim alias atque commodi delectus perferendis. Blanditiis, iste placeat nostrum in! Eligendi, omnis, unde, quos ullam nesciunt molestias quis a saepe nisi distinctio molestiae voluptate obcaecati officiis consequuntur similique aspernatur rerum sequi placeat iure quaerat itaque libero officia recusandae ad corrupti aperiam cum beatae. Adipisci ad natus deleniti.
+						<blockquote> <b>The aim of the project</b> was to develop a map of background seismicity domains that will be used as input data in General Seismic Regionalizing (GSR) map development. It implies processing of .... in domains, fault zones and epicenters of seismic events separately.
+So the task was to distinguish such domains.
+						<br><br>My colleagues decided that background seismicity depends on a few parameters:<br>
+						<br>
+						- Earth’s gravity anomaly;<br>
+						- heat flow;<br>
+						- topography range;<br>
+						- active faults;<br>
+						- seismic events with magnitude from 3 to 5.5<br>
+						</blockquote>
+							What did I do?
 						</p>
 						<p>
-							1)	Карта гравитационной аномалии<br>
-							2)	Карта теплового потока (потом отказались)<br>
-							3)	Карта расчлененности рельефа<br>
-							4)	Карта густоты активных разломов<br>
-							5)	Карта густоты землетрясений с М от 3 до 5,5
+							1)	The map of Earth’s gravity anomaly created by kriging interpolation of <a href="https://bgi.obs-mip.fr/data-products/grids-and-models/wgm2012-global-model/"> Free-air gravity anomaly</a> ascii data <br>
+							<img src="proj1/grav.jpg"><br>
+							2)	The map of heat flow also interpolated by inverse distance weighted (IDW) method from points of <a href="https://www.datapages.com/gis-map-publishing-program/gis-open-files/global-framework/global-heat-flow-database"> Global Heat Flow Database</a>. Unfortunately, there are not so many points in Russia (especially in Siberia), that does not allow to use kriging or other more accurate methods.<br>
+							<img src="proj1/heat.jpg"><br>
+							3)	The map of topography range. I used <a href="https://earthexplorer.usgs.gov/">GTOPO30 of USGS</a> for a basemap and applied <i>Focal statistics</i> tool with circle neighbourhood and "range" as a statistics type to obtain Earth's surface amplitude in each circle<br>
+							<img src="proj1/heat.jpg"><br>
+							4)	The map of active faults density created on <a href="https://www.researchgate.net/publication/364237981_The_Active_Faults_of_Eurasia_Database_AFEAD_the_ontology_and_design_behind_the_continental-scale_dataset">Active faults of Eurasia database</a> by Line density tool <br>
+							<img src="proj1/fault1.jpg"><br>
+							5)	The map of seismic events density with magnitude from 3 to 5.5, created by Point density tool. Events with higher magnitude should be considered in other processing 
+							<img src="proj1/seism.jpg"><br>
 						</p>
 						<p>
-							<img src="assets/images/bach.jpeg" alt="" class="" width="48%"> <img src="assets/images/mag.jpeg" alt="" class="" width="48%">
+							After obtaining and analysing maps, I used <i>Iso Cluster Unsupervised Classification</i> script, varying <br>
+							- the number of classes;<br>
+							- minimum class size;<br>
+							- and sample interval.<br>
+							Each class represents ....
 						</p>
 						<p>
-							Начальные данные, использованные для карт: https://bgi.obs-mip.fr/data-products/grids-and-models/wgm2012-global-model/
+							The resulting map of 6 classes:
+							<img src="proj1/clus1.jpg">
+						</p>
+						<p>
+							And of 10 classes: <br>
+							<img src="proj1/clus2.jpg">
+						</p>
+						<p>
+							As we can see, plain territories such as Russian Plain and West Siberian Plain, are represented mostly by two classes differed due to gravity anomaly, while mountain areas such as Urals, Altai, Sayan, Caucasus, Cherskiy Range and all of the Far East close to Pasific Belt are more speckled due to consisting of more classes.
+						</p>
+						<p>
+							In this case, more classes are not always better, as the 5 classes map is more 
 
 						</p>
-						<p>
-							What instuments did I use. ArcMap 10.5/ Harum, consectetur, quia nisi fugiat quasi ea amet cum inventore aperiam optio qui perspiciatis debitis molestiae laborum minima doloremque ullam eum nesciunt repellendus dolor dicta cumque deserunt. Quaerat, saepe, maxime, quod, dolor nisi assumenda aut est quos optio animi aliquid quidem voluptates adipisci hic recusandae dicta quis eligendi illo ducimus asperiores reiciendis odit distinctio natus? In, reprehenderit, facere, ipsam, vel architecto autem temporibus a quidem voluptatum at nesciunt quas facilis. Soluta, excepturi, nihil, illum dicta hic ratione tenetur voluptate dolorum a tempore dignissimos reprehenderit voluptas expedita officiis enim minus adipisci?
-						<br>First, clustering
-						<br>Then unsupervised classification</p>
 					</div>
-				</article><!-- #post-## -->
+				</article>
 
 			</div>
-		</div> <!-- /row post  -->
+		</div>
 
 		
 		<div class="clearfix"></div>
 
-	</div>	<!-- /container -->
+	</div>
 
 </main>
 
