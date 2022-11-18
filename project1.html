@@ -65,7 +65,7 @@
  						<h1 class="lead text-center">A map of background seismicity of Russia</h1>
 					</header>
 					<div class="entry-content">
-						<p><img alt="" src="proj1/clus1.jpg"></p>
+						<p><img alt="" src="proj1/clus1.JPG"></p>
 						<p>
 						<blockquote> <b>The aim of the project</b> was to develop a map of background seismicity domains that will be used as input data in General Seismic Regionalizing (GSR) map development. It implies processing of .... in domains, fault zones and epicenters of seismic events separately.
 So the task was to distinguish such domains.
@@ -81,15 +81,15 @@ So the task was to distinguish such domains.
 						</p>
 						<p>
 							1)	The map of Earth’s gravity anomaly created by kriging interpolation of <a href="https://bgi.obs-mip.fr/data-products/grids-and-models/wgm2012-global-model/"> Free-air gravity anomaly</a> ascii data <br>
-							<img src="proj1/grav.jpg"><br>
+							<img src="proj1/grav.JPG"><br>
 							2)	The map of heat flow also interpolated by inverse distance weighted (IDW) method from points of <a href="https://www.datapages.com/gis-map-publishing-program/gis-open-files/global-framework/global-heat-flow-database"> Global Heat Flow Database</a>. Unfortunately, there are not so many points in Russia (especially in Siberia), that does not allow to use kriging or other more accurate methods.<br>
-							<img src="proj1/heat.jpg"><br>
+							<img src="proj1/heat.JPG"><br>
 							3)	The map of topography range. I used <a href="https://earthexplorer.usgs.gov/">GTOPO30 of USGS</a> for a basemap and applied <i>Focal statistics</i> tool with circle neighbourhood and "range" as a statistics type to obtain Earth's surface amplitude in each circle<br>
-							<img src="proj1/heat.jpg"><br>
+							<img src="proj1/heat.JPG"><br>
 							4)	The map of active faults density created on <a href="https://www.researchgate.net/publication/364237981_The_Active_Faults_of_Eurasia_Database_AFEAD_the_ontology_and_design_behind_the_continental-scale_dataset">Active faults of Eurasia database</a> by Line density tool <br>
 							<img src="proj1/fault1.jpg"><br>
 							5)	The map of seismic events density with magnitude from 3 to 5.5, created by Point density tool. Events with higher magnitude should be considered in other processing 
-							<img src="proj1/seism.jpg"><br>
+							<img src="proj1/seism.JPG"><br>
 						</p>
 						<p>
 							After obtaining and analysing maps, I used <i>Iso Cluster Unsupervised Classification</i> script, varying <br>
@@ -100,11 +100,11 @@ So the task was to distinguish such domains.
 						</p>
 						<p>
 							The resulting map of 6 classes:
-							<img src="proj1/clus1.jpg">
+							<img src="proj1/clus1.JPG">
 						</p>
 						<p>
 							And of 10 classes: <br>
-							<img src="proj1/clus2.jpg">
+							<img src="proj1/clus2.JPG">
 						</p>
 						<p>
 							As we can see, plain territories such as Russian Plain and West Siberian Plain, are represented mostly by two classes differed due to gravity anomaly, while mountain areas such as Urals, Altai, Sayan, Caucasus, Cherskiy Range and all of the Far East close to Pasific Belt are more speckled due to consisting of more classes.
