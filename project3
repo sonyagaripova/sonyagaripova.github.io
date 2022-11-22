@@ -21,6 +21,16 @@
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
     <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
 	<!--[if lt IE 9]> <script src="assets/js/html5shiv.js"></script> <![endif]-->
+	<style>
+        #map
+        {
+            font: 13px "Open sans",  Helvetica, Arial, sans-serif;
+            margin: 0;
+            height: 350px;
+            width: 700px;
+        }
+    </style>
+</head>
 </head>
 <body>
 
@@ -66,10 +76,9 @@
  						<h1 class="lead text-center">Ecological trail</h1>
 					</header>
 					<div class="entry-content">
-						<p><img alt="" src="proj3/3.jpg"></p>
 						<p>
 							I was born in Ufa city in Bashkortostan Republic known for its location between South Ural Mountains and Russian Plain.
-							My family have a country house not very far from the city. A funny coicidience is that this village and its neighborhood turned out to be
+							My family has a country house not very far from the city. A funny coicidience is that this village and its neighborhood turned out to be
 							described in books of Sergey Aksakov, a famous Russian writer. <br><br>
 							And there is a reason for it. This region is truly stunning as broad fields here meet shady forests. Cows and sheeps, horses from the horsefarm,
 							ancient willows, grasslands and river. All of this makes you believe that you are in amazing fairytale.<br><br>
@@ -77,31 +86,43 @@
 							That is why I got an idea to create a ecological trail of not only beautiful views and activities, but also an educational option.
 						</p>
 						<p>
-							There are some publications on this topic, inlcuding my own: <br>
+							<blockquote>There are some publications on this topic, inlcuding my own: <br>
 							<a href="https://www.researchgate.net/publication/355439941_Landsaftnoe_obosnovanie_formirovania_osobo_ohranaemyh_prirodnyh_territorij_R_Baskortostan_Landscape_justification_for_creation_of_natural_reserves_Bashkortostan">about landscapes</a>, 
+							</blockquote>
 						</p>
 						<p>
 							In addition, just for my own pleasure, I decided to develop a creative map of a route that I could propose to visitors.
 						</p>
 						<h1 class="lead text-center">What did I do?</h1>
 						<p>
-							I took a very simple and ordinary satellite image of Yandex (zoom 14)
+							I took a very simple and ordinary satellite image (zoom 14)
 						</p>
-						<p>
-							<img src="proj3/1.jpg">
-						</p>
+
+					</div>
+				</article>
+			</div>
+		</div>
+	</div>
+
+	<center><div id="map"></div></center>
+	
+		<div class="container">
+			<div class="row topspace">
+			<div class="col-sm-8 col-sm-offset-2">
+ 				<article class="post">
+						
 						<p>
 							Using it as a basemap, I outlined forest, grassland, villages and roads that may be used to drive to the area of interest. <br><br>
 							My concept focuses on Bairamtau hill, as it was called in Aksakov's memoirs. The top of the hill provides a good viewpoint. 
 						</p>
 						<p>
-							<img src="proj3/1.jpg">
+							<img src="proj3/alk0.png">
 						</p>
 						<p>
 							Then I marked sightseeing spots and drew a route through them, so that it could cover the most different landscapes.
 						</p>
 						<p>
-							<img src="proj3/2.jpg"><br>
+							<img src="proj3/alk1.png"><br>
 						</p>
 						<p>
 							One significant problem for me was the lack of a bridge to cross the river. The south bank is very beautiful, although it is not connected with
@@ -115,7 +136,7 @@
 						</p>
 						<h1 class="lead text-center">Check out the result!</h1>
 						<p>
-							<img src="proj3/2.jpg">
+							<img src="proj3/alk2.png">
 						</p>
 					</div>
 				</article>
@@ -172,7 +193,16 @@
 		</div> <!-- /row of widgets -->
 	</div>
 </footer>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script>
+						var map = L.map('map').setView([54.625673, 55.587617], 13);
 
+						var WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+						attribution: 'Tiles &copy; Esri World Imagery',
+						maxZoom: 14
+						});
+						WorldImagery.addTo(map);
+</script>
 
 
 <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
