@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport"    content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author"      content="Sergey Pozhilov (GetTemplate.com)">
+	
+	<title>Ecological trail | Sofya Garipova</title>
+
+	<link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/128/574/574480.png">
+
+	<!-- Bootstrap -->
+	<link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css" rel="stylesheet">
+	<!-- Icon font -->
+	<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+	<!-- Fonts -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alice|Open+Sans:400,300,700">
+	<!-- Custom styles -->
+	<link rel="stylesheet" href="assets/css/styles.css">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+	<!--[if lt IE 9]> <script src="assets/js/html5shiv.js"></script> <![endif]-->
+</head>
+<body>
+
+<header id="header">
+	<div id="head" class="parallax" parallax-speed="1">
+		<h1 id="logo" class="text-center">
+			<span class="title">Sofya Garipova</span>
+			<span class="tagline">garipova-st@yandex.ru<br></span>
+		</h1>
+	</div>
+
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+			</div>
+
+			<div class="navbar-collapse collapse">
+
+				<ul class="nav navbar-nav">
+					<li><a href="https://sonyagaripova.github.io/" class="highlight">Home</a></li>
+					<li class="active"><a href="https://sonyagaripova.github.io/about.html" class="highlight">About me</a></li>
+					<li><a href="https://sonyagaripova.github.io/contact.html" class="highlight">Contact</a></li>
+				</ul>
+			</div><!--/.nav-collapse -->
+		</div>
+	</nav>
+</header>
+
+<main id="main">
+
+	<div class="container">
+
+		<div class="row topspace">
+			<div class="col-sm-8 col-sm-offset-2">
+
+ 				<article class="post">
+					<header class="entry-header">
+ 						<div class="entry-meta">
+ 							<span class="posted-on"><time class="entry-date published">2020, updated in 2022</time></span>
+ 						</div>
+ 						<h1 class="lead text-center">Ecological trail</h1>
+					</header>
+					<div class="entry-content">
+						<p><img alt="" src="proj3/3.jpg"></p>
+						<p>
+							I was born in Ufa city in Bashkortostan Republic known for its location between South Ural Mountains and Russian Plain.
+							My family have a country house not very far from the city. A funny coicidience is that this village and its neighborhood turned out to be
+							described in books of Sergey Aksakov, a famous Russian writer. <br><br>
+							And there is a reason for it. This region is truly stunning as broad fields here meet shady forests. Cows and sheeps, horses from the horsefarm,
+							ancient willows, grasslands and river. All of this makes you believe that you are in amazing fairytale.<br><br>
+							Well, besides loud words, the region is a scientifically valuable as some of landscapes and plant complexes are unique.
+							That is why I got an idea to create a ecological trail of not only beautiful views and activities, but also an educational option.
+						</p>
+						<p>
+							There are some publications on this topic, inlcuding my own: <br>
+							<a href="https://www.researchgate.net/publication/355439941_Landsaftnoe_obosnovanie_formirovania_osobo_ohranaemyh_prirodnyh_territorij_R_Baskortostan_Landscape_justification_for_creation_of_natural_reserves_Bashkortostan">about landscapes</a>, 
+						</p>
+						<p>
+							In addition, just for my own pleasure, I decided to develop a creative map of a route that I could propose to visitors.
+						</p>
+						<h1 class="lead text-center">What did I do?</h1>
+						<p>
+							I took a very simple and ordinary satellite image of Yandex (zoom 14)
+						</p>
+						<p>
+							<img src="proj3/1.jpg">
+						</p>
+						<p>
+							Using it as a basemap, I outlined forest, grassland, villages and roads that may be used to drive to the area of interest. <br><br>
+							My concept focuses on Bairamtau hill, as it was called in Aksakov's memoirs. The top of the hill provides a good viewpoint. 
+						</p>
+						<p>
+							<img src="proj3/1.jpg">
+						</p>
+						<p>
+							Then I marked sightseeing spots and drew a route through them, so that it could cover the most different landscapes.
+						</p>
+						<p>
+							<img src="proj3/2.jpg"><br>
+						</p>
+						<p>
+							One significant problem for me was the lack of a bridge to cross the river. The south bank is very beautiful, although it is not connected with
+							the main part of the territory. The bridge in Novomikhailovka village was ruined in 1999 (or even earlier), so since then the closest way to get to the south bank is
+							the bridge in Bochkarevka village (not in the picture) in 4500 m down the river. However, the old bridge piers of Novomikhailovka still stand safe and sound (more or less).
+							So I decided to dream a little bit and imagine that this bridge is already reconstructed. In such case, other spots may be added to the route map.
+						</p>
+						<p>
+							Afterwards, I needed just to add some design features to the map. For that I used Adobe Illustrator. Here I wanted to emphasize in which point
+							you can find particular activity.
+						</p>
+						<h1 class="lead text-center">Check out the result!</h1>
+						<p>
+							<img src="proj3/2.jpg">
+						</p>
+					</div>
+				</article>
+
+			</div>
+		</div>
+
+		
+		<div class="clearfix"></div>
+
+	</div>
+
+</main>
+
+<footer id="footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3 widget">
+				<h3 class="widget-title">Contact</h3>
+				<div class="widget-body">
+					<p>+7 967 288 44 93<br>
+						<a href="mailto:#">garipova-st@yandex.ru</a><br>
+						<br>
+						Moscow, Russia
+					</p>
+				</div>
+			</div>
+
+			<div class="col-md-3 widget">
+				<h3 class="widget-title">Follow me</h3>
+				<div class="widget-body">
+					<p class="follow-me-icons">
+						<a href="" target="_blank" style="color: #ffffff"><i class="fa fa-github fa-2 "></i></a>
+						<a href="https://www.linkedin.com/in/sofyagaripova" target="_blank" style="color: #ffffff"><i class="fa fa-linkedin fa-2"></i></a>
+						<a href="https://researchgate.net/Sofya_Garipova" target="_blank" style="color: #17252A"><i class="fa fa-researchgate fa-2"></i></a>
+					</p>
+				</div>
+			</div>
+
+			<div class="col-md-3 widget">
+				<div class="widget-body">
+					<p></p>
+				</div>
+			</div>
+
+			<div class="col-md-3 widget">
+				<div class="widget-body">
+					<p class="text-right">
+						Copyright &copy; 2022, Sofya Garipova<br>
+						Design template: <a href="https://www.gettemplate.com" rel="designer">Initio by GetTemplate</a> </p>
+				</div>
+			</div>
+
+		</div> <!-- /row of widgets -->
+	</div>
+</footer>
+
+
+
+<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="assets/js/template.js"></script>
+</body>
+</html>
