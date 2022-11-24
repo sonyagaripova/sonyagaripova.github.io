@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport"    content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author"      content="Sergey Pozhilov (GetTemplate.com)">
+	
+	<title>Map of landscape visibility of national parks | Sofya Garipova</title>
+
+	<link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/128/574/574480.png">
+
+	<!-- Bootstrap -->
+	<link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css" rel="stylesheet">
+	<!-- Icon font -->
+	<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+	<!-- Fonts -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alice|Open+Sans:400,300,700">
+	<!-- Custom styles -->
+	<link rel="stylesheet" href="assets/css/styles.css">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+	<!--[if lt IE 9]> <script src="assets/js/html5shiv.js"></script> <![endif]-->
+</head>
+<body>
+
+<header id="header">
+	<div id="head" class="parallax" parallax-speed="1">
+		<h1 id="logo" class="text-center">
+			<span class="title">Sofya Garipova</span>
+			<span class="tagline">garipova-st@yandex.ru<br></span>
+		</h1>
+	</div>
+
+	<nav class="navbar navbar-default navbar-sticky">
+		<div class="container-fluid">
+
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+			</div>
+
+			<div class="navbar-collapse collapse">
+
+				<ul class="nav navbar-nav">
+					<li><a href="https://sonyagaripova.github.io/" class="highlight">Home</a></li>
+					<li><a href="https://sonyagaripova.github.io/about.html" class="highlight">About me</a></li>
+					<li class="active"><a href="https://sonyagaripova.github.io/contact" class="highlight">Contact</a></li>
+				</ul>
+
+			</div>
+		</div>
+	</nav>
+</header>
+
+<main id="main">
+
+	<div class="container">
+
+		<div class="row topspace">
+			<div class="col-sm-8 col-sm-offset-2">
+
+ 				<article class="post">
+
+
+			<header class="entry-header">
+				<div class="entry-meta"><span class="posted-on"><time class="entry-date published" date="2013-06-17">2022</time></span></div>
+				<h1 class="lead text-center">A map of landscape visibility of national parks</h1>
+			</header>
+					<div class="entry-content">
+						<p><img alt="" src="proj1/clus1.jpg"></p>
+						<p>
+						<blockquote> <b>The aim of the project</b> was to develop a map of background seismicity domains that will be used as input data in General Seismic Regionalizing (GSR) map development. It implies processing of .... in domains, fault zones and epicenters of seismic events separately.
+So the task was to distinguish such domains.</blockquote>
+						My colleagues decided that background seismicity depends on a few parameters:<br>
+						<br>
+						- Earth’s gravity anomaly;<br>
+						- heat flow;<br>
+						- topography range;<br>
+						- active faults;<br>
+						- seismic events with magnitude from 3 to 5.5<br>
+						</p>
+						<h1 class="lead text-center">Input data</h1>
+						<p>
+							Входные данные - это global digital elevation model SRTM 1-arc sec and satellite image Landsat 8 <br>
+							<img src="proj2/elbsrtm.jpg" alt="" class="" width="48%"> <img src="proj2/elbsat.jpg" alt="" class="" width="48%"><br>
+							5)	The map of seismic events density with magnitude from 3 to 5.5, created by Point density tool. Events with higher magnitude should be considered in other processing
+							<img src="proj1/seism.jpg"><br>
+						</p>
+						<p>
+							After obtaining and analysing maps, I used <i>Iso Cluster Unsupervised Classification</i> script, varying <br>
+							- the number of classes;<br>
+							- minimum class size;<br>
+							- and sample interval.<br>
+							<br>The script takes raster data that is above mentioned maps. Each resulting class represents a territory with homogenius pattern.
+						</p>
+						<p>
+							The resulting map of 6 classes:
+							<img src="proj1/clus1.jpg">
+						</p>
+						<p>
+							And of 10 classes: <br>
+							<img src="proj1/clus2.jpg">
+						</p>
+						<p>
+							As we can see, plain territories such as Russian Plain and West Siberian Plain, are represented mostly by two classes differed due to gravity anomaly, while mountain areas such as Urals, Altai, Sayan, Caucasus, Cherskiy Range and all of the Far East close to Pasific Belt are more speckled due to consisting of more classes.
+						</p>
+						<p>
+							In this case, more classes are not always better, as the 5 classes map is more
+
+						</p>
+					</div>
+				</article>
+
+			</div>
+		</div>
+
+
+		<div class="clearfix"></div>
+
+	</div>
+
+</main>
+
+<footer id="footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3 widget">
+				<h3 class="widget-title">Contact</h3>
+				<div class="widget-body">
+					<p>+7 967 288 44 93<br>
+						<a href="mailto:#">garipova-st@yandex.ru</a><br>
+						<br>
+						Moscow, Russia
+					</p>
+				</div>
+			</div>
+
+			<div class="col-md-3 widget">
+				<h3 class="widget-title">Follow me</h3>
+				<div class="widget-body">
+					<p class="follow-me-icons">
+						<a href="" target="_blank" style="color: #ffffff"><i class="fa fa-github fa-2 "></i></a>
+						<a href="https://www.linkedin.com/in/sofyagaripova" target="_blank" style="color: #ffffff"><i class="fa fa-linkedin fa-2"></i></a>
+						<a href="https://researchgate.net/Sofya_Garipova" target="_blank" style="color: #17252A"><i class="fa fa-researchgate fa-2"></i></a>
+					</p>
+				</div>
+			</div>
+
+			<div class="col-md-3 widget">
+				<div class="widget-body">
+					<p></p>
+				</div>
+			</div>
+
+			<div class="col-md-3 widget">
+				<div class="widget-body">
+					<p class="text-right">
+						Copyright &copy; 2022, Sofya Garipova<br>
+						Design template: <a href="https://www.gettemplate.com" rel="designer">Initio by GetTemplate</a> </p>
+				</div>
+			</div>
+
+		</div> <!-- /row of widgets -->
+	</div>
+</footer>
+
+
+
+<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="assets/js/template.js"></script>
+</body>
+</html>
