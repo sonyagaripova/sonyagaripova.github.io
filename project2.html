@@ -6,7 +6,7 @@
 	<meta name="description" content="">
 	<meta name="author"      content="Sergey Pozhilov (GetTemplate.com)">
 	
-	<title>Map of landscape visibility of national parks | Sofya Garipova</title>
+	<title>Analysis of national parks landscapes | Sofya Garipova</title>
 
 	<link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/128/574/574480.png">
 
@@ -64,49 +64,85 @@
 
 			<header class="entry-header">
 				<div class="entry-meta"><span class="posted-on"><time class="entry-date published" date="2013-06-17">2022</time></span></div>
-				<h1 class="lead text-center">A map of landscape visibility of national parks</h1>
+				<h1 class="lead text-center">Analysis of national parks landscapes</h1>
 			</header>
 					<div class="entry-content">
-						<p><img alt="" src="proj1/clus1.jpg"></p>
+						<p><img alt="" src="proj1/clus.jpg"></p>
 						<p>
-						<blockquote> <b>The aim of the project</b> was to develop a map of background seismicity domains that will be used as input data in General Seismic Regionalizing (GSR) map development. It implies processing of .... in domains, fault zones and epicenters of seismic events separately.
-So the task was to distinguish such domains.</blockquote>
-						My colleagues decided that background seismicity depends on a few parameters:<br>
-						<br>
-						- Earth’s gravity anomaly;<br>
-						- heat flow;<br>
-						- topography range;<br>
-						- active faults;<br>
-						- seismic events with magnitude from 3 to 5.5<br>
+							The idea belongs to my friend Timofey Moiseev. I performed only geodata processing and its visualization.
+						</p>
+						<p>
+							Суть в том, что в России в национальных парках зачастую использован не весь потенциал. If there were no trails in parks (at all!), how
+							we could arrange them to cover most interesting parts of parks? Timofey supposed that two key parameters are
+							1) landscape <b>variety</b>; and 2) landscape <b>visibility</b>.
+						</p>
+						<p><blockquote>
+							The first case is important, ведь если пейзаж вокруг однообразен, то интерес идти по тропе снижается. Второй случай тоже важен, но в целом не так сильно:
+							очень приятно идти по тропе с возможностью видеть большую территорию, ведь неспроста ценятся смотровые площадки. Места, имеющие большой
+							обзор, целесообразно включать в маршрут.</blockquote>
+						</p>
+						<p>
+							So the aim was to , показать на примере двух-трех национальных парков России, возможность использования
+							такого подхода.
 						</p>
 						<h1 class="lead text-center">Input data</h1>
 						<p>
-							Входные данные - это global digital elevation model SRTM 1-arc sec and satellite image Landsat 8 <br>
-							<img src="proj2/elbsrtm.jpg" alt="" class="" width="48%"> <img src="proj2/elbsat.jpg" alt="" class="" width="48%"><br>
-							5)	The map of seismic events density with magnitude from 3 to 5.5, created by Point density tool. Events with higher magnitude should be considered in other processing
-							<img src="proj1/seism.jpg"><br>
+							В качестве подопытных эталонов было решено взять два национальных парка, находящихся в горной местности, но при этом различающихся.<br>
+							Кроме того, я была в обоих их них, они мне близки.<br>
+							Национальный парк "Приэльбрусье" находится в пределах Кавказских гор, имеет на своей территории большие перепады высот, в том числе самую высокую
+							гору Европы - Эльбрус 5642 м. В его пределах находится несколько населенных пунктов, к которым ведет главная артерия парка - долина реки Баксан с юга
+							и долина реки Малка с севера.
 						</p>
 						<p>
-							After obtaining and analysing maps, I used <i>Iso Cluster Unsupervised Classification</i> script, varying <br>
-							- the number of classes;<br>
-							- minimum class size;<br>
-							- and sample interval.<br>
-							<br>The script takes raster data that is above mentioned maps. Each resulting class represents a territory with homogenius pattern.
+							Input data for this analysis are <b>global digital elevation model SRTM 1-arc sec</b> (from the left) and
+							<b>satellite image Landsat 8</b> shooted in summer 2021 with no clouds (from the right). <br>
+							<img src="proj2/elbsrtm.jpg" width="48%"> <img src="proj2/elbsat.jpg" width="48%">
 						</p>
 						<p>
-							The resulting map of 6 classes:
-							<img src="proj1/clus1.jpg">
+							The second national park is Zuratkul, located in South Urals среди густых таежных лесов. Здесь также есть горные хребты, однако амплитуды рельефа
+							значительно меньше. Кроме того, здесь практически нет дорог и крупных рек. Большая часть парка является заповедной зоной.<br>
+							<img src="proj2/zursrtm.jpg" width="48%"> <img src="proj2/zursat.jpg" width="48%">
+						</p>
+						<h1 class="lead text-center">Processing</h1>
+						<p>
+							На примере Приэльбрусья. Как построить карту разнообразия ландшафтов. Сначала кластеризация по снимку.
+							Проверка, сколько классов будет оптимально: 5, 10 или 50. Картинка.
+							Перевела классы в вектор и посчитала, сколько их попадает в шаблон из сот. Создала сетку с шириной 500 м (это достаточно
+							мало, чтобы сохранить детальность, удобную для прокладывания будущих троп, и достаточно много, чтобы в каждую ячейку
+							попало несколько классов). Я объединила все полигоны одинакового класса, затем посчитала количество полигонов в каждой ячейке
+							(инструмент spatial join, target feature – соты, joint feature – полигоны классов, join operation – one to one, match option – intersect, keep all targets).<br>
+							
 						</p>
 						<p>
-							And of 10 classes: <br>
-							<img src="proj1/clus2.jpg">
+							Zuratkul park required a little bit of post-classification processing that is noise removal and therefore improving the quality of resulting
+							raster. So I applied (Majority filter) –> (Boundary clean) –> (Region group, set null, nibble) algorithm until I was satisfied with the result.
+							Иногда разница значительная, Почему?
 						</p>
 						<p>
-							As we can see, plain territories such as Russian Plain and West Siberian Plain, are represented mostly by two classes differed due to gravity anomaly, while mountain areas such as Urals, Altai, Sayan, Caucasus, Cherskiy Range and all of the Far East close to Pasific Belt are more speckled due to consisting of more classes.
+							<img src="proj2/zurres.png" width="48%"> <img src="proj2/zurres3.png" width="48%">
 						</p>
-						<p>
-							In this case, more classes are not always better, as the 5 classes map is more
 
+						<p>
+							Теперь про видимость. Входной растр - рельеф. Для точек построила равномерную сетку по квадратам (точки – в узлах квадратов, сторона квадрата 500 м).
+							Инструмент Vision – frequency. В каждой точке инструмент считает, сколько из нее видно точек.
+							Можно показывать только те места, из которых видно много точек.
+							Картинка
+						</p>
+						<p>
+							Можно визуализировать не в виде сот, а в виде непрерывной карты.
+							Картинка.
+						</p>
+						<h1 class="lead text-center">Conclusion</h1>
+						<p>
+							Теперь немного анализа. Что видно на этих картах по отдельности. Какие есть проблемы, какие есть инсайты. В чем разница между
+							двумя этими кейсами.
+						</p>
+						<p>
+							На десерт: я сделала тот же анализ для национального парка, расположенного на равнинной территории без особых достопримечательностей.
+							Он оказался бесполезен, по крайней мере визуальная часть - видимость формируется за счет амплитуды рельефа, а здесь она минимальна.
+							Да и карта разнообразия малоинформативна, так как здесь ландшафты однообразные, за исключением водных объектов.
+							Поэтому такой подход целесообразно применять только для горных территорий.
+							Картинка
 						</p>
 					</div>
 				</article>
