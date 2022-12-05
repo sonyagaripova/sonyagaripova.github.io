@@ -72,26 +72,26 @@
 							The idea belongs to my friend Timofey Moiseev. I performed only geodata processing and its visualization.
 						</p>
 						<p>
-							Суть в том, что в России в национальных парках зачастую использован не весь потенциал. If there were no trails in parks (at all!), how
+							We decided to analyse the location of roads and trails in national parks. If there were no trails (at all!), how
 							we could arrange them to cover most interesting parts of parks? Timofey supposed that two key parameters are
 							1) landscape <b>variety</b>; and 2) landscape <b>visibility</b>.
 						</p>
 						<p><blockquote>
-							The first case is important, ведь если пейзаж вокруг однообразен, то интерес идти по тропе снижается. Второй случай тоже важен, но в целом не так сильно:
+							The first case is important, as if the landscape is same all the time, your trip becomes boring. Much more interesting to walk where, for example,
+						And the second case comes when
 							очень приятно идти по тропе с возможностью видеть большую территорию, ведь неспроста ценятся смотровые площадки. Места, имеющие большой
 							обзор, целесообразно включать в маршрут.</blockquote>
 						</p>
 						<p>
-							So the aim was to , показать на примере двух-трех национальных парков России, возможность использования
-							такого подхода.
+							So the aim was to show an appoach to emphasize the territories most suitable for being visited. We have chosen two national parks in Russia both located
+							in mountain areas, yet different by the views and landscapes. Moreover, I have been to both of them, so I can recall the real area and compare the results
+							to my own impression.
 						</p>
 						<h1 class="lead text-center">Input data</h1>
 						<p>
-							В качестве подопытных эталонов было решено взять два национальных парка, находящихся в горной местности, но при этом различающихся.<br>
-							Кроме того, я была в обоих их них, они мне близки.<br>
-							Национальный парк "Приэльбрусье" находится в пределах Кавказских гор, имеет на своей территории большие перепады высот, в том числе самую высокую
-							гору Европы - Эльбрус 5642 м. В его пределах находится несколько населенных пунктов, к которым ведет главная артерия парка - долина реки Баксан с юга
-							и долина реки Малка с севера.
+							The first national park is Prielbrusye, located in Great Caucasus Mountains and inclding the highest mount of Europe - Elbrus - of 5642 m.
+							The altitude varies very much here due to high intencity of glacier and volcanic processes. There are several villages and towns within the park, located along the main waterflow - Baksan river
+							(South from Elbrus). Except for Dzhily-Su located on Malka river (North from Elbrus). The southern part of the park is the most civilized and crowded.
 						</p>
 						<p>
 							Input data for this analysis are <b>global digital elevation model SRTM 1-arc sec</b> (from the left) and
@@ -99,38 +99,35 @@
 							<img src="proj2/elbsrtm.jpg" width="48%"> <img src="proj2/elbsat.jpg" width="48%">
 						</p>
 						<p>
-							The second national park is Zuratkul, located in South Urals среди густых таежных лесов. Здесь также есть горные хребты, однако амплитуды рельефа
-							значительно меньше. Кроме того, здесь практически нет дорог и крупных рек. Большая часть парка является заповедной зоной.<br>
+							The second national park is Zuratkul, located in South Urals among густых таежных лесов. Here we can see some nountain ranges вытянутые по оси
+							Main Ural Ridge. However, both topography range and altitude here are less than in Prielbrusie, and the area is mostly covered with
+							forest. There are only one village near the big Lake Zuratkul. A large area of the park is a conservation area.<br>
 							<img src="proj2/zursrtm.jpg" width="48%"> <img src="proj2/zursat.jpg" width="48%">
 						</p>
 						<h1 class="lead text-center">Processing</h1>
 						<p>
-							На примере Приэльбрусья. Как построить карту разнообразия ландшафтов. Сначала кластеризация по снимку.
-							Проверка, сколько классов будет оптимально: 5, 10 или 50. Картинка.
-							Перевела классы в вектор и посчитала, сколько их попадает в шаблон из сот. Создала сетку с шириной 500 м (это достаточно
-							мало, чтобы сохранить детальность, удобную для прокладывания будущих троп, и достаточно много, чтобы в каждую ячейку
-							попало несколько классов). Я объединила все полигоны одинакового класса, затем посчитала количество полигонов в каждой ячейке
-							(инструмент spatial join, target feature – соты, joint feature – полигоны классов, join operation – one to one, match option – intersect, keep all targets).<br>
-							
+							First, I show Prielbrusie example. The analysis begins with satellite image classification. I tried three options: 5, 10 and 50 classes, and
+							the best turned out to be the middle one.
+						</p>
+						<p>
+							The next stage was to transform raster to vector polygons and to calculate how many of them intersect with the hexagonal net. I created a net
+							with hexagons of 500 m width (as it is small enough to keep details essential for trails design, but at the same time large enough to
+							have each hexagon consisted of at least one class). <br>
+							So I united polygons of the same class and used <i>spatial join</i> tool.
+							<img src="proj2/elbres1.png" width="48%"> <img src="proj2/elbres2.png" width="48%">
+						</p>
+						<p>
+							Now the visibility part. The input raster is a DEM. I created a net of equally-spaced (500 m again) points. For each point the tool calculates
+							how many pixels are visible, resulting in ////////////////////. I highlighted only most visible areas leaving hillshaded DEM's surface
+							instead of less visible.
+							<img src="proj2/elbres2.jpg" width="48%"> <img src="proj2/elbres2.png" width="48%">
 						</p>
 						<p>
 							Zuratkul park required a little bit of post-classification processing that is noise removal and therefore improving the quality of resulting
 							raster. So I applied (Majority filter) –> (Boundary clean) –> (Region group, set null, nibble) algorithm until I was satisfied with the result.
-							Иногда разница значительная, Почему?
 						</p>
 						<p>
 							<img src="proj2/zurres.png" width="48%"> <img src="proj2/zurres3.png" width="48%">
-						</p>
-
-						<p>
-							Теперь про видимость. Входной растр - рельеф. Для точек построила равномерную сетку по квадратам (точки – в узлах квадратов, сторона квадрата 500 м).
-							Инструмент Vision – frequency. В каждой точке инструмент считает, сколько из нее видно точек.
-							Можно показывать только те места, из которых видно много точек.
-							Картинка
-						</p>
-						<p>
-							Можно визуализировать не в виде сот, а в виде непрерывной карты.
-							Картинка.
 						</p>
 						<h1 class="lead text-center">Conclusion</h1>
 						<p>
@@ -138,11 +135,11 @@
 							двумя этими кейсами.
 						</p>
 						<p>
-							На десерт: я сделала тот же анализ для национального парка, расположенного на равнинной территории без особых достопримечательностей.
-							Он оказался бесполезен, по крайней мере визуальная часть - видимость формируется за счет амплитуды рельефа, а здесь она минимальна.
-							Да и карта разнообразия малоинформативна, так как здесь ландшафты однообразные, за исключением водных объектов.
-							Поэтому такой подход целесообразно применять только для горных территорий.
-							Картинка
+							And the final part is the combination between these two maps.
+							<img src="proj2/zurres2.png" width="48%"> For Prielbrusye
+
+
+							<img src="proj2/zurres2.png" width="48%"> For Zuratkul
 						</p>
 					</div>
 				</article>
