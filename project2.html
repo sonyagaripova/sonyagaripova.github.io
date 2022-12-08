@@ -78,13 +78,12 @@
 						</p>
 						<p><blockquote>
 							The first case is important, as if the landscape is same all the time, your trip becomes boring. Much more interesting to walk where, for example,
-						And the second case comes when
-							очень приятно идти по тропе с возможностью видеть большую территорию, ведь неспроста ценятся смотровые площадки. Места, имеющие большой
-							обзор, целесообразно включать в маршрут.</blockquote>
+						And the second case should be as it is far more pleasant to hike with the view. Observation points often becomes destinations of tourists, so our
+						map must include places from where large territory can be observed.</blockquote>
 						</p>
 						<p>
 							So the aim was to show an appoach to emphasize the territories most suitable for being visited. We have chosen two national parks in Russia both located
-							in mountain areas, yet different by the views and landscapes. Moreover, I have been to both of them, so I can recall the real area and compare the results
+							in mountain areas, yet different by the views and landscapes. Moreover, I have been to both of them, so I can compare the results
 							to my own impression.
 						</p>
 						<h1 class="lead text-center">Input data</h1>
@@ -99,31 +98,34 @@
 							<img src="proj2/elbsrtm.jpg" width="48%"> <img src="proj2/elbsat.jpg" width="48%">
 						</p>
 						<p>
-							The second national park is Zuratkul, located in South Urals among густых таежных лесов. Here we can see some nountain ranges вытянутые по оси
-							Main Ural Ridge. However, both topography range and altitude here are less than in Prielbrusie, and the area is mostly covered with
+							The second national park is Zuratkul, located in South Urals among густых таежных лесов. Here we can see some nountain ranges вытянутые prolated along
+							the axis of the Main Ural Ridge. However, both topography range and altitude here are less than in Prielbrusie, and the area is mostly covered with
 							forest. There are only one village near the big Lake Zuratkul. A large area of the park is a conservation area.<br>
 							<img src="proj2/zursrtm.jpg" width="48%"> <img src="proj2/zursat.jpg" width="48%">
 						</p>
 						<h1 class="lead text-center">Processing</h1>
 						<p>
-							First, I show Prielbrusie example. The analysis begins with satellite image classification. I tried three options: 5, 10 and 50 classes, and
-							the best turned out to be the middle one.
+							First, I show <b>Prielbrusye park</b> example. The <b>variability</b> analysis begins with satellite image classification. I tried three options: 5, 10 and 50 classes, and
+							the best turned out to be the middle one. 5 classes are too little due to reducing details, and 50 classes are too much as the map becomes diffilcut to analyse. So I chose raster of 10 classes.<br>
+							<img src="proj2/elb5.jpg" width="32%"> <img src="proj2/elb10.jpg" width="32%"> <img src="proj2/elb50.jpg" width="32%"><br>
+
 						</p>
 						<p>
 							The next stage was to transform raster to vector polygons and to calculate how many of them intersect with the hexagonal net. I created a net
 							with hexagons of 500 m width (as it is small enough to keep details essential for trails design, but at the same time large enough to
 							have each hexagon consisted of at least one class). <br>
 							So I united polygons of the same class and used <i>spatial join</i> tool.
+						</p>
+						<p>
+							Now the <b>visibility</b> part. The input raster is a DEM. I created a net of equally-spaced (500 m again) points. For each point the tool calculates
+							how many pixels are visible, resulting in ////////////////////. I highlighted only most visible areas leaving hillshaded DEM's surface
+							instead of less visible.
+						</p>
+						<p>
 							<img src="proj2/elbres1.png" width="48%"> <img src="proj2/elbres2.png" width="48%">
 						</p>
 						<p>
-							Now the visibility part. The input raster is a DEM. I created a net of equally-spaced (500 m again) points. For each point the tool calculates
-							how many pixels are visible, resulting in ////////////////////. I highlighted only most visible areas leaving hillshaded DEM's surface
-							instead of less visible.
-							<img src="proj2/elbres2.jpg" width="48%"> <img src="proj2/elbres2.png" width="48%">
-						</p>
-						<p>
-							Zuratkul park required a little bit of post-classification processing that is noise removal and therefore improving the quality of resulting
+							<b>Zuratkul park</b> required a little bit of post-classification processing that is noise removal and therefore improving the quality of resulting
 							raster. So I applied (Majority filter) –> (Boundary clean) –> (Region group, set null, nibble) algorithm until I was satisfied with the result.
 						</p>
 						<p>
@@ -131,12 +133,8 @@
 						</p>
 						<h1 class="lead text-center">Conclusion</h1>
 						<p>
-							Теперь немного анализа. Что видно на этих картах по отдельности. Какие есть проблемы, какие есть инсайты. В чем разница между
-							двумя этими кейсами.
-						</p>
-						<p>
-							And the final part is the combination between these two maps.
-							<img src="proj2/zurres2.png" width="48%"> For Prielbrusye
+							And the final part is the combination of these two maps. Darker colors mark the most attractive sights with variable landscape and large terrirories observed.<br>
+							<img src="proj2/elbres3.png" width="48%"> For Prielbrusye
 
 
 							<img src="proj2/zurres2.png" width="48%"> For Zuratkul
