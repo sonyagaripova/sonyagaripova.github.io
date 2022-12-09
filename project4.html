@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport"    content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author"      content="Sergey Pozhilov (GetTemplate.com)">
+	
+	<title>Statistical analysis of Quaternary eruptions in Kamchatka | Sofya Garipova</title>
+
+	<link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/128/574/574480.png">
+
+	<!-- Bootstrap -->
+	<link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css" rel="stylesheet">
+	<!-- Icon font -->
+	<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+	<!-- Fonts -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alice|Open+Sans:400,300,700">
+	<!-- Custom styles -->
+	<link rel="stylesheet" href="assets/css/styles.css">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+	<!--[if lt IE 9]> <script src="assets/js/html5shiv.js"></script> <![endif]-->
+</head>
+<body>
+
+<header id="header">
+	<div id="head" class="parallax" parallax-speed="1">
+		<h1 id="logo" class="text-center">
+			<span class="title">Sofya Garipova</span>
+			<span class="tagline">garipova-st@yandex.ru<br></span>
+		</h1>
+	</div>
+
+	<nav class="navbar navbar-default navbar-sticky">
+		<div class="container-fluid">
+
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+			</div>
+
+			<div class="navbar-collapse collapse">
+
+				<ul class="nav navbar-nav">
+					<li><a href="https://sonyagaripova.github.io/" class="highlight">Home</a></li>
+					<li><a href="https://sonyagaripova.github.io/about.html" class="highlight">About me</a></li>
+					<li class="active"><a href="https://sonyagaripova.github.io/contact" class="highlight">Contact</a></li>
+				</ul>
+
+			</div>
+		</div>
+	</nav>
+</header>
+
+<main id="main">
+
+	<div class="container">
+
+		<div class="row topspace">
+			<div class="col-sm-8 col-sm-offset-2">
+
+ 				<article class="post">
+
+
+			<header class="entry-header">
+				<div class="entry-meta"><span class="posted-on"><time class="entry-date published" date="2013-06-17">2022</time></span></div>
+				<h1 class="lead text-center">Statistical analysis of Quaternary eruptions in Kamchatka</h1>
+			</header>
+					<div class="entry-content">
+						<p><img alt="" src="proj4/clus.jpg"></p>
+						<p>
+							We have obtained a 6.3 Ma-long sequence of ash-falls deposited on Detroit seamount, NE Emperor chain.
+							It is a unique composite record of explosive volcanism located downwind of the highly explosive volcanic arc of Kamchatka.
+
+						</p>
+						<p>
+							<i>This research has not been published yet, so I will not give mamy details of all the steps of analysis.
+								Right now the text of the article is still in progress.</i>
+						</p>
+						<h1 class="lead text-center">Fractal analysis</h1>
+						<p>
+							Independent events occurring with a constant mean rate in a fixed time interval are usually expressed by Poisson distribution.
+							If real events do not fit to Poisson model, they are either not independent (thus, form a periodicity or, the opposite,
+							clusters), or time intervals between them vary. To check if Detroit data fit to any of mentioned cases,
+							I analysed inter-event delays (d), that is time intervals between events.
+						</p>
+						<p>
+							γ, that is a shape parameter of Weibull distribution, defines if the probability of inter-delay to be less than mean inter-delay.
+							If γ = 1, Weibull distribution reduces to Poisson distribution. If γ < 1, the sequence is clustered, i.e. events group (small
+							intervals occur more often than in Poisson model), meaning that it is fractal. If γ > 1, events are separated, the sequence tends
+							to periodicity (small intervals occur less often than in Poisson model). So here Weibull cumulative distribution function (CDF) comes to help:)
+						</p>
+						<p>
+							Weibull картинка
+						</p>
+						<p>
+							Fig. shows Weibull CDF (cumulative distribution function) scatter plot, approximated by a straight-line, where the slope is γ = 0,84.
+							Since γ < 1, the sequence is not random, and it is clustered, however the characteristic scale remains unknown.
+						</p>
+						<p>
+							Another disadvantage is that Weibull model reveals clustering trend only for intervals between two adjacent events, whereas true self-similarity may be noticed
+							when analyzing all observed inter-delays. In this case, a key parameter is <b>fractal dimension</b>. First, consider <b><u>"Event – time" series</u></b>.
+						</p>
+						<p>
+							<b>Fractal dimension (Dc)</b> determines as a slope of Cd ~ log10(n/nmax) [source]. The definitions of these expressions are states in the source article.
+							Please refer to [Gusev, et al, 2003]. I only specify that in a limiting case of Dc = 1, inter-event delays distributed by Poisson model.
+							If Dc < 1, they group into clusters rather than have individual periodicity.
+						</p>
+						<p>
+							<img src="proj4/elb5.jpg" width="100%"><br>
+							Dc = 0,72, r2 = 0,97
+						</p>
+						<p>
+							To consider the <b>intensity of events</b>, the same analysis was conducted to <b><u>"Tephra volume - time" series</u></b>.
+							Fractal dimension here calculates a little bit different way due to using cumulative weight function (again, refer to [Gusev et al, 2003]), however we
+							also look to the slope.
+						</p>
+						<p>
+							<img src="proj4/elb5.jpg" width="100%"><br>
+							Dcv = 0,7, r2 = 0,97
+						</p>
+						<p>
+							Some points of the scatter, that are separated from the majority, represent ash-falls of small thickness
+							due to possible absence of tephra layers in the sea mount cores, providing
+							overestimated inter-delays. Thus, only the majority that can be approximated by straight-line was considered in the research.
+						</p>
+						<p>
+							In order to prove the significance of <b>clustering</b>, I calculated Dc in case of true Poisson sequence.
+							For that, I generated an artificial sequence of 119 <b>random inter-delays corresponding to a Poisson distribution</b> with a mean rate 52.8,
+							that is mean of real inter-delays. Then the same calculation was performed 5000 times by Python 3.9 code.
+						</p>
+						<p>
+							Also, I had to check if the <b>order of events</b> in Detroit sequence is significant. So I performed the same calculation with <b>volumes of tephra
+							randomly shuffled</b>, thus simulating events of given intensity occuring in random order. Inter-delays remained same as in the real sequence.
+							Then the same analysis was conducted 5000 times.
+						</p>
+						<p>
+							<img src="proj4/elb5.jpg" width="48%"> <img src="proj4/elb10.jpg" width="48%"> Графики искусственных рядов
+						</p>
+						<p>
+							Dcv shuffled = 0.75, r2 = 0.97 meaning that artificial shuffled sequence is more self-similar than the real one. <br>
+							A fractal dimension is different for real events and tephra time-series. Since Dc > Dcv (0.72 > 0.7), Detroit sequence is likely
+							to have <b>“order clustering” effect</b> as events group not only by time, but also by volume simultaneously.
+						</p>
+						<h1 class="lead text-center">Spectral analysis</h1>
+						<p>
+							Spectral analysis was conducted due to reveal periodicity trends by multitaper method invented by David Thompson [link]
+							to estimate power spectrum. The main advantage of the method is reducing bias due to using multiple uncorrelated tapers.
+							This method assumes that discrete prolate spheroidal sequences (DPSS) are used as tapers, therefore each taper obtains
+							independent estimation of the time-series. Averaging each estimates reduces dispersion that would one taper have. However,
+							the time-series data should have equal time intervals (dt).
+						</p>
+						<p>
+							Spectral analysis was processed by multitaper 1.1.3 python
+							package of <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=sCDnvEQAAAAJ&sortby=pubdate&citation_for_view=sCDnvEQAAAAJ:PklR0melJeUC">German A. Prieto</a>, MTSpec module. The package allows to calculate power spectral density (PSD) with 95%
+							confidence interval of multitaper estimate. Both curves were smoothed by moving average.
+						</p>
+						<p>
+							I chose time-series of 600 ka, because О18 series has regular dt (interval) until 600 ka. dt value depends on the quantity of analyzing
+							observations, so 1 ka was set as optimal for a series of such a time extent.
+						</p>
+						<p>
+							The result is PSD plot showing peaks on particular frequencies. The delta O18 time-series [link LR04] was chosen as a sample
+							sequence that is known to depend on Milankovich cycles. In this case peaks are expected to be observed on 0.01 and 0.025 corresponding
+							to 100ka and 40ka respectively. <br>
+							картинка
+						</p>
+						<p>
+							Except these peaks PSD tends to zero. На временном интервале, близком к современности, наибольшую амплитуду имеет пик 100ka.
+							These 0.01 and 0.025 frequency peaks are observed in different time intervals of the series. The older the interval, the stronger
+							becomes a 40ka peak influence and 100ka reduces. After 1Ma, 100ka peak smooths and almost reduces, however 40ka range increases.
+						</p>
+						<p>
+							Картинки Детройта
+						</p>
+						<p>
+							The same analysis performed on Detroit time-series results in the lack of a few particular peaks. This plot is irregular, and
+							PSD does not tend to zero, but fluctuates chaotically. Different time-intervals of the series
+							result in disparate plots, however all of them do not display peaks on particular frequencies.
+						</p>
+						<h1 class="lead text-center">Short summary</h1>
+						<p>
+							Comparing the results of these two separate analysis, we can say that the Detroit sequence <br>
+							1) is not random; <br>
+							2) consists of events that group into clusters not only by the time, but also by the volume of tephra; <br>
+							3) has no periodicity, thus is not affected by Milankovich (or other) cycles.
+						</p>
+					</div>
+				</article>
+
+			</div>
+		</div>
+
+
+		<div class="clearfix"></div>
+
+	</div>
+
+</main>
+
+<footer id="footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3 widget">
+				<h3 class="widget-title">Contact</h3>
+				<div class="col-md-3 widget">
+				<div class="widget-body">
+					<p></p>
+				</div>
+			</div>
+
+			<div class="col-md-3 widget">
+				<div class="widget-body">
+					<p></p>
+				</div>
+			</div>
+
+			<div class="col-md-3 widget">
+				<div class="widget-body">
+					<p></p>
+				</div>
+			</div>
+
+			<div class="col-md-3 widget">
+				<div class="widget-body">
+					<p class="text-right">
+						Copyright &copy; 2022, Sofya Garipova<br>
+						Design template: <a href="https://www.gettemplate.com" rel="designer">Initio by GetTemplate</a> </p>
+				</div>
+			</div>
+
+		</div> <!-- /row of widgets -->
+	</div>
+</footer>
+
+
+
+<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="assets/js/template.js"></script>
+</body>
+</html>
