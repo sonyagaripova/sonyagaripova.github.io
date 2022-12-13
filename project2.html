@@ -63,8 +63,8 @@
 
 
 			<header class="entry-header">
-				<div class="entry-meta"><span class="posted-on"><time class="entry-date published" date="2013-06-17">2022</time></span></div>
-				<h1 class="lead text-center">Analysis of national parks landscapes</h1>
+				<div class="entry-meta"><span class="posted-on"><time class="entry-date published">2022</time></span></div>
+				<h1 class="lead text-center">Analysis of national parks landscapes diversity and visibility</h1>
 			</header>
 					<div class="entry-content">
 						<p><img alt="" src="proj1/clus.jpg"></p>
@@ -74,7 +74,7 @@
 						<p>
 							We decided to analyse the location of roads and trails in national parks. If there were no trails (at all!), how
 							we could arrange them to cover most interesting parts of parks? Timofey supposed that two key parameters are
-							1) landscape <b>variety</b>; and 2) landscape <b>visibility</b>.
+							1) landscape <b>variability</b>; and 2) landscape <b>visibility</b>.
 						</p>
 						<p><blockquote>
 							The first case is important, as if the landscape is same all the time, your trip becomes boring. Much more interesting to walk where, for example,
@@ -88,20 +88,20 @@
 						</p>
 						<h1 class="lead text-center">Input data</h1>
 						<p>
-							The first national park is Prielbrusye, located in Great Caucasus Mountains and inclding the highest mount of Europe - Elbrus - of 5642 m.
+							The first national park is <u>Prielbrusye</u>, located in Great Caucasus Mountains and inclding the highest mount of Europe - Elbrus - of 5642 m.
 							The altitude varies very much here due to high intencity of glacier and volcanic processes. There are several villages and towns within the park, located along the main waterflow - Baksan river
 							(South from Elbrus). Except for Dzhily-Su located on Malka river (North from Elbrus). The southern part of the park is the most civilized and crowded.
 						</p>
 						<p>
 							Input data for this analysis are <b>global digital elevation model SRTM 1-arc sec</b> (from the left) and
 							<b>satellite image Landsat 8</b> shooted in summer 2021 with no clouds (from the right). <br>
-							<img src="proj2/elbsrtm.JPG" width="48%"> <img src="proj2/elbsat.JPG" width="48%">
+							<img src="proj2/elbsrtm.jpg" width="48%"> <img src="proj2/elbsat.jpg" width="48%">
 						</p>
 						<p>
-							The second national park is Zuratkul, located in South Urals among thick forest. Here we can see some nountain ranges prolated along
+							The second national park is <u>Zuratkul</u>, located in South Urals among thick forest. Here we can see some nountain ranges prolated along
 							the axis of the Main Ural Ridge. However, both topography range and altitude here are less than in Prielbrusie, and the area is mostly covered with
 							forest. There are only one village near the big Lake Zuratkul. A large area of the park is a conservation area.<br>
-							<img src="proj2/zursrtm.JPG" width="48%"> <img src="proj2/zursat.JPG" width="48%">
+							<img src="proj2/zursrtm.jpg" width="48%"> <img src="proj2/zursat.jpg" width="48%">
 						</p>
 						<h1 class="lead text-center">Processing</h1>
 						<p>
@@ -124,6 +124,14 @@
 						<p>
 							<img src="proj2/elbres1.png" width="48%"> <img src="proj2/elbres2.png" width="48%">
 						</p>
+						<p>Quite expectedly, the southern part of the park is the most diverse in natural landscapes.
+							Great diversity is observed along rivers, it is especially noticeable in the north, where the valley of Malka river (from north to south),
+							as well as Baksan river (from west to east) is readily visible. Local pockets of natural diversity are along the gorges and valleys of mountain
+							rivers. You can also see that near the summit of Elbrus the landscapes are rather monotonous - everything is covered with snow and glaciers.</p>
+
+						<p>On the visibility map Elbrus stands out well, which is not surprising, from it you can see almost the entire territory of the park
+							(the exception is the saddle between its two peaks). Also stand out the slopes of high mountains in the south, mostly facing the valley of the
+							river Baksan, as it is quite wide.</p>
 						<p>
 							<b>Zuratkul park</b> required a little bit of post-classification processing that is noise removal and therefore improving the quality of resulting
 							raster. So I applied (Majority filter) –> (Boundary clean) –> (Region group, set null, nibble) algorithm until I was satisfied with the result.
@@ -131,14 +139,43 @@
 						<p>
 							<img src="proj2/zurres.png" width="48%"> <img src="proj2/zurres3.png" width="48%">
 						</p>
+						<p>
+							In the Zyuratkul Park, landscapes are generally quite diverse, mainly in the northwest and south, because there are exposed kurums and rocky ledges of mountains,
+							not only forest. Lake Zyuratkul stands out by its monotony, but its shoreline is one of the brightest places in the whole park. On the visibility map, the mountain
+							ranges stretching from SW to NE are clearly distinguished, especially Zyuratkul in the very north of the park, not far from the lake.
+						</p>
 						<h1 class="lead text-center">Conclusion</h1>
 						<p>
-							And the final part is the combination of these two maps. Darker colors mark the most attractive sights with variable landscape and large terrirories observed.<br>
-							<img src="proj2/elbres3.png" width="48%"> For Prielbrusye
-
-
-							<img src="proj2/zurres2.png" width="48%"> For Zuratkul
+							And the final part is the combination of these two maps. Darker colors mark the most attractive sights with variable landscape and large terrirories observed.
 						</p>
+
+						<div class="container">
+							<div class="row">
+								<div class="col-md-6">
+									<img src="proj2/elbres3.png">
+								</div>
+								<div class="col-md-6">
+									On the <b>Prielbrusye</b> combined map is no longer possible to distinguish Elbrus itself, because of monotonous landscapes, as well as river
+									valleys and gorges. But you can notice that the southern part is generally more promising, especially the southeastern part of the park. The northern slope of Elbrus
+									in the center of the map stands out somewhat unexpectedly.
+								</div>
+							</div>
+							<div class="col-md-6">
+									<img src="proj2/zurres2.png">
+								</div>
+								<div class="col-md-6">
+									The <b>Zuratkul</b> combined map expectedly emphasizes the mountain ranges, as the view opens from them, and also due to the
+									altitudinal zonation there is a change of ecosystems and accordingly the landscape diversity increases. The lake shoreline, however, does not stand out as well, as it
+									does not provide a beautiful view, but Mt. Zyuratkul remains promising.
+								</div>
+						</div>
+						
+						<p>
+							In general, Zuratkul landscape diversity does not vary as much as visibility, so the latter influences the final map quite strongly.
+							At the same time, in Prielbrusye Park, both parameters change strongly and differently from each other, so the greatest brightness
+							on the final map received the "average" places and those small areas where high values coincided.
+						</p>
+						<p>Anyway, this approach may be considered in touristic trails design if most attractive territories should to be highlighted.</p>
 					</div>
 				</article>
 
@@ -156,24 +193,14 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-3 widget">
-				<h3 class="widget-title">Contact</h3>
 				<div class="widget-body">
-					<p>+7 967 288 44 93<br>
-						<a href="mailto:#">garipova-st@yandex.ru</a><br>
-						<br>
-						Moscow, Russia
-					</p>
+					<p></p>
 				</div>
 			</div>
 
 			<div class="col-md-3 widget">
-				<h3 class="widget-title">Follow me</h3>
 				<div class="widget-body">
-					<p class="follow-me-icons">
-						<a href="" target="_blank" style="color: #ffffff"><i class="fa fa-github fa-2 "></i></a>
-						<a href="https://www.linkedin.com/in/sofyagaripova" target="_blank" style="color: #ffffff"><i class="fa fa-linkedin fa-2"></i></a>
-						<a href="https://researchgate.net/Sofya_Garipova" target="_blank" style="color: #17252A"><i class="fa fa-researchgate fa-2"></i></a>
-					</p>
+					<p></p>
 				</div>
 			</div>
 
